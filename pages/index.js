@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Hero from "../components/Hero/Hero";
+import Services from "../components/Services/Services";
 import Layout from "../components/UI/Layout";
 import css from '../styles/Home.module.css';
 
@@ -14,7 +15,8 @@ export default function Home() {
           </Head>
           {/* body */}
           <main>
-            <Hero />       
+            <Hero />   
+            <Services />    
           </main>
         </div>
       </Layout>
