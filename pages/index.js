@@ -18,7 +18,7 @@ export default function Home({pizzas}) {
           <main>
             <Hero />   
             <Services /> 
-            <Menu />   
+            <Menu pizzas={pizzas}/>   
           </main>
         </div>
       </Layout>
