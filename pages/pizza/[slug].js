@@ -17,6 +17,12 @@ const Pizza  = ({pizza}) => {
       : setQuantity((prev) => prev - 1);
   }
 
+  // add to cart
+  const addPizza = useStore((state) => state.addPizza)
+  const addToCart = () => {
+    addPizza({...pizza, price: pizza.price[size], quantity: quantity, size: size})
+  }
+
   return (
     <Layout>
       <div className={css.container}>
@@ -73,7 +79,7 @@ const Pizza  = ({pizza}) => {
 
 
           {/* button */}
-          <div className={`btn ${css.btn}`}>
+          <div className={`btn ${css.btn}`} onClick={addToCart}>
             Add to Cart
           </div>
         </div>
