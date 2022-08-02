@@ -5,6 +5,7 @@ import { useStore } from '../store/store';
 import { urlFor } from '../lib/client';
 import Layout from './../components/UI/Layout';
 import toast, { Toaster } from 'react-hot-toast';
+import OrderModal from '../components/OrderModal/OrderModal';
 
 const cart = () => {
   const CartData = useStore((state)=> state.cart);
@@ -113,6 +114,8 @@ const cart = () => {
 
       <OrderModal
        opened = {paymentMethod === 0}
+       setOpened = {setPaymentMethod}
+       paymentMethod = {paymentMethod}
        />
     </Layout>
   )
