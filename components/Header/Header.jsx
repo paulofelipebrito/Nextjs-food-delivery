@@ -6,7 +6,6 @@ import { useStore } from '../../store/store'
 import Link from 'next/link';
 
 const Header = () => {
-  const state = useStore((state) => state);
   const items = useStore((state) => state.cart.pizzas.length);
 
   return (
