@@ -3,7 +3,8 @@ import Layout from '../../components/UI/Layout';
 import Image from 'next/image';
 import './Pizza.module.css';
 import LeftArrow from '../../assets/LeftArrow.png'
-import RightArrow from '../../assets/RightArrow.png'
+import RightArrow from '../../assets/RightArrow.png';
+import toast, {Toaster} from 'react-hot-toast';
 
 const Pizza  = ({pizza}) => {
   const [size, setSize] = useState(1)
@@ -21,6 +22,7 @@ const Pizza  = ({pizza}) => {
   const addPizza = useStore((state) => state.addPizza)
   const addToCart = () => {
     addPizza({...pizza, price: pizza.price[size], quantity: quantity, size: size})
+    toast.success("Added to Cart")
   }
 
   return (
@@ -83,6 +85,7 @@ const Pizza  = ({pizza}) => {
             Add to Cart
           </div>
         </div>
+        <Toaster />
       </div>
     </Layout>
   )
