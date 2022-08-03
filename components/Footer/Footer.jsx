@@ -1,4 +1,4 @@
-import {UilFacebook, UilGitHub, UilInstagram} from '@iconscout/react-unicons'
+import {UilFacebook, UilGithub, UilInstagram} from '@iconscout/react-unicons'
 import Image from 'next/image';
 import Logo from '../../assets/Logo.png';
 
@@ -10,7 +10,7 @@ const Footer = () => {
       <span>ALL RIGHT RESERVED</span>
       <div className={css.social}>
         <UilFacebook size={45}/>
-        <UilGitHub size={45}/>
+        <UilGithub size={45}/>
         <UilInstagram size={45}/>
       </div>
 

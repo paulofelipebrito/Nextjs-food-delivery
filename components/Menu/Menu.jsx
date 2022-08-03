@@ -3,7 +3,7 @@ import { urlFor } from '../../lib/client'
 import css from './Menu.module.css'
 import Link from 'next/link'
 
-const Menu = () => {
+const Menu = ({pizzas}) => {
   return (
     <div className={css.container}>
       <div className={css.heading}>

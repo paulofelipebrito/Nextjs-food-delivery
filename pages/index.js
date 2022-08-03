@@ -3,6 +3,7 @@ import Hero from "../components/Hero/Hero";
 import Menu from "../components/Menu/Menu";
 import Services from "../components/Services/Services";
 import Layout from "../components/UI/Layout";
+import { client } from "../lib/client";
 import css from '../styles/Home.module.css';
 
 export default function Home({pizzas}) {

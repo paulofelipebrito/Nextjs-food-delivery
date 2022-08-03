@@ -7,6 +7,7 @@ import Layout from './../components/UI/Layout';
 import toast, { Toaster } from 'react-hot-toast';
 import OrderModal from '../components/OrderModal/OrderModal';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const cart = () => {
   const CartData = useStore((state)=> state.cart);

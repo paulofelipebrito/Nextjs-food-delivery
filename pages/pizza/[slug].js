@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../../components/UI/Layout';
 import Image from 'next/image';
-import './Pizza.module.css';
-import LeftArrow from '../../assets/LeftArrow.png'
-import RightArrow from '../../assets/RightArrow.png';
+import LeftArrow from '../../assets/arrowLeft.png'
+import RightArrow from '../../assets/arrowRight.png';
 import toast, {Toaster} from 'react-hot-toast';
+import { client, urlFor } from '../../lib/client';
+import { useStore } from '../../store/store';
+import css from './Pizza.module.css'
 
 const Pizza  = ({pizza}) => {
   const [size, setSize] = useState(1)
   const [quantity, setQuantity] = useState(1)
+  
+  let src = urlFor(pizza.image).url();
 
   const handleQuantity = (type) => {
     type === 'inc'
@@ -30,9 +34,9 @@ const Pizza  = ({pizza}) => {
       <div className={css.container}>
         <div className={css.imageWrapper}>
           <Image 
-            loader={()=>src}
-            alt=""
+            loader={() => src} 
             src={src}
+            alt=""
             layout='fill'
             unoptimized 
             objectFit='cover'/>
@@ -95,7 +99,7 @@ export default Pizza;
 
 export async function getStaticPaths(){
   const paths =  await client.fetch(
-    `*[_type=="pizza" && defined (slug.current)][].slug.current`
+    `*[_type=="pizza" && defined(slug.current)][].slug.current`
   )
 
   return {

@@ -1,8 +1,9 @@
-import css from './styles/Hero.module.css';
+import css from './Hero.module.css';
 import Image from 'next/image'
 import Cherry from '../../assets/Cherry.png'
 import HeroImage from '../../assets/HeroImage.png'
 import {UilPhone} from '@iconscout/react-unicons'
+import Pizza1 from '../../assets/p1.jpg';
 
 const Hero = () => {
   return (
@@ -44,7 +45,7 @@ const Hero = () => {
 
         <div className={css.pizza}>
           <div>
-            <Image src={Pizza} alt="Pizza" objectFit="cover" layout="intrinsic"/>
+            <Image src={Pizza1} alt="Pizza" objectFit="cover" layout="intrinsic"/>
           </div>
 
           <div className={css.details}>
