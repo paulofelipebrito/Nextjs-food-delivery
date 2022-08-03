@@ -6,11 +6,13 @@ import { urlFor } from '../lib/client';
 import Layout from './../components/UI/Layout';
 import toast, { Toaster } from 'react-hot-toast';
 import OrderModal from '../components/OrderModal/OrderModal';
+import { useRouter } from 'next/router';
 
 const cart = () => {
   const CartData = useStore((state)=> state.cart);
   const removePizza = useStore((state)=> state.removePizza);
   const [paymentMethod, setPaymentMethod] = useStore(null);
+  const router = useRouter();
 
   const handleRemove = (i) => {
     removePizza(i);
@@ -22,6 +24,22 @@ const cart = () => {
   const handleOnDelivery = () => {
     setPaymentMethod(0);
     typeof window !== 'undefined' && localStorage.setItem('total', total());
+  }
+
+  const handleCheckout =async()=> {
+    typeof window !== 'undefined' && localStorage.setItem('total', total());
+    setPaymentMethod(1);
+    const response = await fetch(`/api/stripe`,{
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(CartData.pizzas),
+    });
+
+    if(response.status === 500) return;
+
+    const data = await response.json();
+    toast.loading("Redirecting ...");
+    router.push(data.url);
   }
 
   return (
@@ -105,7 +123,7 @@ const cart = () => {
 
             <div className={css.buttons}>
               <button className="btn" onClick={handleOnDelivery}>Pay on Delivery</button>
-              <button className="btn">Pay Now</button>
+              <button className="btn" onClick={handleCheckout}>Pay Now</button>
             </div>
 
         </div>
