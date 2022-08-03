@@ -11,7 +11,10 @@ import { useRouter } from 'next/router';
 const cart = () => {
   const CartData = useStore((state)=> state.cart);
   const removePizza = useStore((state)=> state.removePizza);
-  const [paymentMethod, setPaymentMethod] = useStore(null);
+  const [paymentMethod, setPaymentMethod] = useState(null);
+  const [order, setOrder] = useState(
+    typeof window !== 'undefined' && localStorage.getItem('order')
+  );
   const router = useRouter();
 
   const handleRemove = (i) => {
@@ -120,11 +123,16 @@ const cart = () => {
               <span>$ {total()}</span>
             </div>
           </div>
-
-            <div className={css.buttons}>
-              <button className="btn" onClick={handleOnDelivery}>Pay on Delivery</button>
-              <button className="btn" onClick={handleCheckout}>Pay Now</button>
-            </div>
+              {!order && CartData.pizzas.length > 0
+                ? (
+                  <div className={css.buttons}>
+                    <button className="btn" onClick={handleOnDelivery}>Pay on Delivery</button>
+                    <button className="btn" onClick={handleCheckout}>Pay Now</button>
+                  </div>
+                )
+                : null
+              }
+            
 
         </div>
       </div>
