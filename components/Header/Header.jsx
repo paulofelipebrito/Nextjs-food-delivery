@@ -18,9 +18,9 @@ const Header = () => {
 
       {/* Menu */}
       <ul className={css.menu}>
-        <li>Home</li>
-        <li>Menu</li>
-        <li>Contact</li>
+        <li><Link href={"/"}>Home</Link></li>
+        <li><Link href={"/#menu"}>Menu</Link></li>
+        <li><Link href={"#contact"}>Contact</Link></li>
       </ul>
 
       {/* Right side */}

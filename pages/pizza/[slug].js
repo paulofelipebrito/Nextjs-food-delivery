@@ -12,7 +12,7 @@ const Pizza  = ({pizza}) => {
   const [size, setSize] = useState(1)
   const [quantity, setQuantity] = useState(1)
   
-  let src = urlFor(pizza.image).url();
+  let src = urlFor(pizza?.image).url();
 
   const handleQuantity = (type) => {
     type === 'inc'
@@ -27,6 +27,7 @@ const Pizza  = ({pizza}) => {
   const addToCart = () => {
     addPizza({...pizza, price: pizza.price[size], quantity: quantity, size: size})
     toast.success("Added to Cart")
+    // localStorage.setItem('Cart', {...pizza, price: pizza.price[size], quantity: quantity, size: size})
   }
 
   return (
@@ -50,7 +51,7 @@ const Pizza  = ({pizza}) => {
           <span><span style={{color: 'var(--themeRed)'}}>$</span> {pizza.price[size]}</span>
           <div className={css.size}>
             <span>Size</span>
-            <div className={css.SizeVariants}>
+            <div className={css.sizeVariants}>
               <div onClick={()=> setSize(0)} 
               className={size === 0 ? css.selected : ''}>Small</div>
               <div onClick={()=> setSize(1)}
@@ -70,15 +71,17 @@ const Pizza  = ({pizza}) => {
                 alt="Left Arrow"
                 objectFit="contain"
                 onClick={() => handleQuantity("dec")}
+                style={{ cursor: "pointer" }}
                 />
-                <span>{quantity}</span>
+              <span>{quantity}</span>
 
-                <Image src={RightArrow}
+              <Image src={RightArrow}
                 height={20}
                 width={20}
                 alt="Right Arrow"
                 objectFit="contain"
                 onClick={() => handleQuantity("inc")}
+                style={{ cursor: "pointer" }}
                 />
             </div>
           </div>
@@ -109,11 +112,11 @@ export async function getStaticPaths(){
 }
 
 export async function getStaticProps(context){
-  const {slug = ""} = context.params;
+  const {slug} = context.params;
   const pizza = await client.fetch(
-    `*[_type == "pizza" && slug.current == ${slug}][0]`
-  )
-
+    '*[_type == "pizza" && slug.current == $slug][0]', {slug: slug}
+    )
+    
   return {
     props: {
       pizza,

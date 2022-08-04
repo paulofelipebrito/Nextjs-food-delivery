@@ -1,5 +1,5 @@
 import { Modal, useMantineTheme } from '@mantine/core';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createOrder } from '../../lib/orderHandler';
 import { useStore } from '../../store/store';
 import {useRouter} from 'next/router';
@@ -10,6 +10,7 @@ const OrderModal = ({opened, setOpened, paymentMethod}) => {
   const theme = useMantineTheme();
   const router = useRouter();
   const [formData, setFormData] = useState({});
+  const [total, setTotal] = useState({});
 
   const handleInput = (e) => {
     setFormData({...formData, [e.target.name] : e.target.value});
@@ -17,16 +18,16 @@ const OrderModal = ({opened, setOpened, paymentMethod}) => {
 
   const resetCart = useStore((state)=> state.resetCart)
 
-  const total = typeof window !== 'undefined' && localStorage.getItem('total');
+  useEffect(()=>{
+    setTotal(localStorage.getItem('total'));
+  },[])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = await createOrder({...formData, total, paymentMethod})
     toast.success("Order Placed");
     resetCart();
-    {
-      typeof window !== 'undefined' && localStorage.setItem('order', id);
-    }
+    localStorage.setItem('order', id);
 
     router.push(`/order/${id}`)
   }

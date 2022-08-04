@@ -48,7 +48,6 @@
   width: 38rem;
   position: absolute;
   top: -5rem;
-  left: -5rem;
 }
 
 .contactUs{
@@ -60,7 +59,7 @@
   padding: 1rem;
   border-radius: 5rem;
   top: 6rem;
-  left: -6rem;
+  left: -2rem;
   gap: 1rem; 
   background-color: white;
   box-shadow: var(--shadow);
@@ -92,7 +91,7 @@
   border-radius: 0.5rem;
   position: absolute;
   bottom: 4rem;
-  left: 19rem;
+  left: 27rem;
   width: max-content;
 }
 

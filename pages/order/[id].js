@@ -8,8 +8,8 @@ import Spinner from '../../assets/spinner.svg'
 import Image from 'next/image';
 
 export const getServerSideProps = async ({params}) => {
-  const query = `*[_type == "order" && _id == '${params.id}']`;
-  const order = await client.fetch(query);
+  const query = '*[_type == "order" && _id == $paramsId]';
+  const order = await client.fetch(query, { paramsId: params.id});
 
   return {
     props: {
@@ -54,7 +54,7 @@ export default function Orders({order}){
           </div> 
         </div>
 
-        <div className={statusContainer}>
+        <div className={css.statusContainer}>
 
           <div className={css.status}>
             <UilBill width={50} height={50} />
