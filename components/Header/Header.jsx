@@ -17,7 +17,7 @@ const Header = () => {
       </div>
 
       {/* Menu */}
-      <ul>
+      <ul className={css.menu}>
         <li>Home</li>
         <li>Menu</li>
         <li>Contact</li>

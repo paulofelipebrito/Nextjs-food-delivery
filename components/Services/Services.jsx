@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import css from './Services.module.css';
 import s1 from '../../assets/s1.png'
-import s2 from '../../assets/s1.png'
-import s3 from '../../assets/s1.png'
+import s2 from '../../assets/s2.png'
+import s3 from '../../assets/s3.png'
 
 const Services = () => {
   return (

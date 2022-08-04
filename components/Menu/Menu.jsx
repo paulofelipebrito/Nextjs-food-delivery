@@ -20,7 +20,7 @@ const Menu = ({pizzas}) => {
             <div className={css.pizza} key={id}>
               <Link href={`./pizza/${pizza.slug.current}`}>
                 <div className={css.imageWrapper}>
-                  <Image loader = {() => src} src={src} alt={pizza.name} objectFit="cover" layout="fill"/>
+                  <Image loader = {() => src} src={src} alt={pizza.name} objectFit="cover" layout="fill" unoptimized/>
                 </div>
               </Link>
 

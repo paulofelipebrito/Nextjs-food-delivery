@@ -22,16 +22,16 @@ const Hero = () => {
             Your <span style={{color: "var(--themeRed)"}}>Pizza</span>
           </span>
         </div>
-      </div>
 
-      <div className={css.miniText}>
-        Our mission is to filling your tummy with delicious food and with fast and free delivery
-      </div>
+        <div className={css.miniText}>
+          Our mission is to filling your tummy with delicious food and with fast and free delivery
+        </div>
 
-      <button className={`btn ${css.btn}`}>Get Started</button>
+        <button className={`btn ${css.btn}`}>Get Started</button>
+      </div>
 
       {/* Right side */}
-      <div className={css.rightSide}>
+      <div className={css.right}>
         <div className={css.imageContainer}>
           <Image src={HeroImage} alt="hero" layout="intrinsic" />
         </div>

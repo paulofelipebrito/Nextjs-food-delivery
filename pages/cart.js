@@ -71,6 +71,7 @@ const cart = () => {
                         loader = {() => src} 
                         src={src}
                         alt=""
+                        unoptimized
                         objectFit = "cover"
                         width = {85}
                         height = {85}
