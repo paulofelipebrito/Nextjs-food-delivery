@@ -2,8 +2,8 @@ import Layout from '../../components/UI/Layout';
 import {client} from '../../lib/client';
 import css from './Order.module.css';
 import {UilBill, UilBox} from '@iconscout/react-unicons';
-import Cooking from '../../assets/Cooking.png'
-import Onway from '../../assets/Onway.png'
+import Cooking from '../../assets/cooking.png'
+import Onway from '../../assets/onway.png'
 import Spinner from '../../assets/spinner.svg'
 import Image from 'next/image';
 
