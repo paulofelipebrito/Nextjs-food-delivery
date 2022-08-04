@@ -52,7 +52,7 @@ const cart = () => {
   if(CartData.pizzas.length === 0){
     return (
       <Layout>
-        <p>You don't have any product on your cart.</p>
+        <p>You don&apos;t have any product on your cart.</p>
       </Layout>
     )
   }
